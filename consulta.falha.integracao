@@ -1,0 +1,53 @@
+---------------------------------------------------------------------------------
+----------------------------CONSULTA-FALHA-INTEGRAÇÃO----------------------------
+--------------------------------------PIMS---------------------------------------
+---------------------------------------------------------------------------------
+
+SELECT D3_NRBPIMS, D_E_L_E_T_, D3_ESTORNO, D3_LOTECTL, D3_DOC, D3_QUANT, * FROM SD3010 WITH(NOLOCK) 
+    WHERE D3_NRBPIMS = '2470'
+        AND D3_FILIAL = '060102'
+        AND D3_EMISSAO = '20221107' 
+        --AND D3_DOC = 'TS00410G3'
+        ORDER BY R_E_C_N_O_
+
+SELECT D_E_L_E_T_, D5_PRODUTO, D5_ESTORNO, D5_QUANT, D5_LOTECTL, * FROM SD5010 WITH(NOLOCK)
+    WHERE D5_FILIAL = '060102'
+        AND D5_DOC = 'TS0040102'
+        AND D5_DATA = '20221107'
+        AND D_E_L_E_T_ = ''
+        AND D5_PRODUTO = '3120000024'
+        ORDER BY R_E_C_N_O_
+
+SELECT D3_NRBPIMS, D_E_L_E_T_, D3_ESTORNO, D3_LOTECTL, D3_DOC, D3_QUANT, * FROM SD3010 WITH(NOLOCK) 
+    WHERE D3_COD = '3120000024'
+        AND D3_LOCAL = '11' 
+        AND D3_NRBPIMS = '2470'
+        AND D3_EMISSAO = '20221107' 
+        --AND D3_DOC = 'TS00410G3'
+        ORDER BY R_E_C_N_O_
+
+SELECT * FROM SC1010 WITH(NOLOCK) WHERE C1_XSERVI = ''
+
+SELECT D3_NRBPIMS, D_E_L_E_T_, D3_ESTORNO, D3_LOTECTL, D3_DOC, * FROM SD3010 WITH(NOLOCK) 
+    WHERE D3_NRBPIMS = '469'
+        AND D3_FILIAL = '060107' 
+
+SELECT * FROM SB8010 WITH(NOLOCK)
+    WHERE B8_FILIAL = '060107'
+        AND B8_PRODUTO = '3140000010'
+        AND B8_LOTECTL = '0191-22'
+
+SELECT D3_ESTORNO, D3_EMISSAO, * FROM SD3010 WITH(NOLOCK)
+    WHERE --D3_FILIAL = '060107'
+         D3_DOC = 'APLIC17'
+        AND D3_COD ='3140000010'
+        AND D3_LOTECTL = '0191-22'
+            ORDER BY R_E_C_N_O_
+
+SELECT D_E_L_E_T_, D5_PRODUTO, D5_ESTORNO, D5_QUANT, * FROM SD5010 WITH(NOLOCK)
+    WHERE D5_FILIAL = '060102'
+        AND D5_DOC = 'TS0040102'
+        AND D5_DATA = '20221106'
+        AND D5_PRODUTO = '3140000106'
+        AND D5_LOTECTL = 'AA00422216'
+            ORDER BY R_E_C_N_O_
